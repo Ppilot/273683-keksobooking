@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url] [![Dependency status][dependency-image]][dependency-url]
 
 * Студент: [Petr Patrushev](https://up.htmlacademy.ru/javascript/8/user/273683).
-* Наставник: `Неизвестно`.
+* Наставник: `Алексей Балесный`.
 
 ---
 
