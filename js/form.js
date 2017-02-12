@@ -1,7 +1,7 @@
 'use strict';
 
 
-
+// test
 var pins = document.querySelectorAll('.pin');
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
