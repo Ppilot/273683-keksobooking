@@ -1,30 +1,46 @@
 'use strict';
 
-// Показ карточки объявления
+
 
 var pins = document.querySelectorAll('.pin');
-pins.forEach(function (pin, i) {
-  pin.addEventListener('click', function () {
-    document.querySelector('.dialog').style.display = 'block';
-    var activePin = document.querySelector('.pin--active');
-    if (activePin) {
-      activePin.classList.remove('pin--active');
-    }
-    pin.classList.add('pin--active');
-  });
-});
-
-// Закрытие карточки объявления
-
 var dialog = document.querySelector('.dialog');
 var dialogClose = document.querySelector('.dialog__close');
+var pinActive = document.querySelector('.pin--active');
+
+// функция удаления класс "активности" элемента.
+var pinDeactivation = function () {
+  pinActive.classList.remove('pin--active');
+};
+
+// функция добавления класс "активности" элемента.
+var pinActivation = function (pin) {
+  pinActive = pin;
+  console.log('---------');
+  console.log(pin);
+  pinActive.classList.add('pin--active');
+};
+
+// Переключение класса "активности" на элемент на который кликнули.
+var toggleActive = function (pin) {
+  pin.addEventListener('click', function () {
+    pinDeactivation();
+    pinActivation(pin);
+    dialog.style.display = 'block';
+  });
+};
+
+// Показ карточки объявления.
+for (var i = 0; i < pins.length; i++) {
+  toggleActive(pins[i]);
+}
+
+// Закрытие карточки объявления.
 dialogClose.addEventListener('click', function () {
+  pinDeactivation();
   dialog.style.display = 'none';
-  var activePin = document.querySelector('.pin--active');
-  if (activePin) {
-    activePin.classList.remove('pin--active');
-  }
 });
+
+
 
 // Проверка правильности введенных данных
 
@@ -98,8 +114,6 @@ minPrice.addEventListener('change', minPriceChanged);
 
 var countRooms = document.querySelector('#room_number');
 var countPlaces = document.querySelector('#capacity');
-
-console.log(countPlaces);
 
 var countRoomsChanged = function () {
     switch (countRooms.value) {
